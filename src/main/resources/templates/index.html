@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>SpringBootRestApi</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#sum").click(function() {
+			if ($.isNumeric($("#a").val())) {
+				$("#errmsg1").html("");
+			} else {
+				$("#errmsg1").html("Digits Only");
+				return false;
+			}
+
+			if ($.isNumeric($("#b").val())) {
+				$("#errmsg2").html("");
+			} else {
+				$("#errmsg2").html("Digits Only");
+				return false;
+			}
+		});
+	});
+</script>
+<style>
+#errmsg1, #errmsg2 {
+	color: red;
+	margin: 5px;
+}
+</style>
+
+</head>
+<body>
+	<div align="center">
+		<form autocomplete="off" action="index" method="post">
+			<p>Sum of Two Numbers</p>
+
+			<div th:if="${message}">
+				<strong th:text="${message}"></strong>
+			</div>
+			<p>
+				Enter Number1: <input type="text" name="a" id="a"
+					required="required" /><span id="errmsg1"></span>
+			</p>
+			<p>
+				Enter Number2: <input type="text" name="b" id="b"
+					required="required" /><span id="errmsg2"></span>
+			</p>
+			<div align="center">
+				<input type="submit" id="sum" value="Sum" />
+			</div>
+
+		</form>
+		<p>
+			Result: <strong th:text="${result}"></strong>
+		</p>
+	</div>
+</body>
+</html>
